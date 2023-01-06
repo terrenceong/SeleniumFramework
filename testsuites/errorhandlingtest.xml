@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite" parallel="tests">
+    <groups>
+        <run>
+            <include name="ErrorHandling"></include>
+        </run>
+    </groups>
+    <listeners>
+        <listener class-name="terrenceong.link.testcomponent.Listeners"></listener>
+    </listeners>
+    <test thread-count="2" name="Error Validation Test">
+        <classes>
+            <class name="terrenceong.link.tests.ErrorValidationTest"></class>
+        </classes>
+    </test>
+    <test thread-count="2"  name="Submit Order Test">
+        <classes>
+            <class name="terrenceong.link.tests.RefactoredTest"></class>
+        </classes>
+    </test>
+</suite>

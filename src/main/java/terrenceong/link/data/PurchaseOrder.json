@@ -1,0 +1,12 @@
+[
+  {
+    "email": "yusarin@gmail.com",
+    "password": "YusaxMisa123",
+    "shoppingItems": ["ADIDAS ORIGINAL","ZARA COAT 3"]
+  },
+  {
+    "email": "bobby@gmail.com",
+    "password": "Bobby123",
+    "shoppingItems": ["ADIDAS ORIGINAL","IPHONE 13 PRO"]
+  }
+]
