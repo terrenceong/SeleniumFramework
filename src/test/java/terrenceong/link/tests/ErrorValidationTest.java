@@ -20,7 +20,7 @@ public class ErrorValidationTest extends BaseTest {
     }
     @Test(groups = {"ErrorHandling"})
     public void cartErrorValidation(){
-        String[] shoppingArr = {"ADIDAS ORIGINAL","ZARA COAT 3"};
+        String[] shoppingArr = {"ADIDAS ORIGINAL","ZARA COAT 33"};
         List<String> shoppingList = Arrays.asList(shoppingArr);
         ProductCatalogue productCatalogue = loginPage.loginApplication("yusarin@gmail.com","YusaxMisa123");
         productCatalogue.addProductToCart(shoppingList);

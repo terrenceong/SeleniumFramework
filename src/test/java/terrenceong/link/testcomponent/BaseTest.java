@@ -27,10 +27,10 @@ public class BaseTest {
     public LoginPage loginPage;
     public WebDriver initializeDriver() throws IOException {
         Properties prop = new Properties();
-//        FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "\\src\\main" +
-//                "\\resources\\test.properties");
-        FileInputStream fis = new FileInputStream("src/main" +
-                "/resources/test.properties");
+        FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "\\src\\main" +
+                "\\resources\\test.properties");
+//        FileInputStream fis = new FileInputStream("src/main" +
+//                "/resources/test.properties");
         prop.load(fis);
         String browserName =
                 System.getProperty("browser")!=null ? System.getProperty("browser") : prop.getProperty("browser");
@@ -59,7 +59,7 @@ public class BaseTest {
         String ssDate = dateFormat.format(new Date());
         TakesScreenshot ts = (TakesScreenshot) driver;
         File source = ts.getScreenshotAs(OutputType.FILE);
-        File file = new File("reports/" + testCaseName + "_"+ ssDate+ ".png");
+        File file = new File(System.getProperty("user.dir")+ "\\reports\\" + testCaseName + "_"+ ssDate+ ".png");
         FileUtils.copyFile(source,file);
         FileInputStream fileInputStream =new FileInputStream(file);
             byte[] bytes =new byte[(int)file.length()];

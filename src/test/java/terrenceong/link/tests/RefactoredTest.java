@@ -53,8 +53,8 @@ public class RefactoredTest extends BaseTest {
 //    }
     @DataProvider
     public Object[][] getData() throws IOException {
-//        List<HashMap<Object,Object>> data = DataReader.getJsonDataToMap(System.getProperty("user.dir") +"\\src\\main\\java\\terrenceong\\link\\data\\PurchaseOrder.json");
-        List<HashMap<Object,Object>> data = DataReader.getJsonDataToMap("src/main/java/terrenceong/link/data/PurchaseOrder.json");
+        List<HashMap<Object,Object>> data = DataReader.getJsonDataToMap(System.getProperty("user.dir") +"\\src\\main\\java\\terrenceong\\link\\data\\PurchaseOrder.json");
+//        List<HashMap<Object,Object>> data = DataReader.getJsonDataToMap("src/main/java/terrenceong/link/data/PurchaseOrder.json");
 
         return new Object[][]{{data.get(0)},{data.get(1)}};
     }
