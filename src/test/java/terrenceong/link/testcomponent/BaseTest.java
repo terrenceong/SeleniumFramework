@@ -3,10 +3,12 @@ package terrenceong.link.testcomponent;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.io.FileHandler;
@@ -39,6 +41,13 @@ public class BaseTest {
             case "chrome":
                 WebDriverManager.chromedriver().setup();
                 this.driver = new ChromeDriver();
+                break;
+            case "chromeheadless":
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("headless");
+                this.driver = new ChromeDriver(options);
+                // following line allows headless mode to run in full screen to prevent flaky test case
+                this.driver.manage().window().setSize(new Dimension(1440,900));
                 break;
             case "edge":
                 WebDriverManager.edgedriver().setup();
