@@ -7,7 +7,7 @@ public class ExtentReporter {
 
     public static ExtentReports getReportObject(){
 //        String path = System.getProperty("user.dir") + "\\reports\\report.html";
-        String path = "/reports/report.html";
+        String path = "reports/report.html";
         ExtentSparkReporter reporter = new ExtentSparkReporter(path);
         reporter.config().setReportName("e2e Test");
         reporter.config().setDocumentTitle("Test Report");
