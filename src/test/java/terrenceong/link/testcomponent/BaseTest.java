@@ -39,7 +39,7 @@ public class BaseTest {
         browserName = browserName.toLowerCase();
         switch(browserName){
             case "chrome":
-                WebDriverManager.chromedriver().setup();
+                WebDriverManager.chromedriver().driverVersion("108.0.5359.124").setup();
                 this.driver = new ChromeDriver();
                 break;
             case "chromeheadless":
