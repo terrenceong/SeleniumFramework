@@ -11,6 +11,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import terrenceong.link.pageobjects.LoginPage;
@@ -18,6 +20,7 @@ import terrenceong.link.pageobjects.LoginPage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
@@ -34,29 +37,37 @@ public class BaseTest {
         prop.load(fis);
         String browserName =
                 System.getProperty("browser")!=null ? System.getProperty("browser") : prop.getProperty("browser");
+        Boolean remote = System.getProperty("remote")!=null;
         browserName = browserName.toLowerCase();
-        switch(browserName){
-            case "chrome":
-                WebDriverManager.chromedriver().setup();
-                this.driver = new ChromeDriver();
-                break;
-            case "chromeheadless":
-                ChromeOptions options = new ChromeOptions();
-                options.addArguments("headless");
-                WebDriverManager.chromedriver().setup();
-                this.driver = new ChromeDriver(options);
-                // following line allows headless mode to run in full screen to prevent flaky test case
-                this.driver.manage().window().setSize(new Dimension(1440,900));
-                break;
-            case "edge":
-                WebDriverManager.edgedriver().setup();
-               this.driver = new EdgeDriver();
-                break;
+        if(remote){
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setBrowserName("chrome");
+            this.driver = new RemoteWebDriver(new URL("http://localhost:4444"),capabilities);
+        }
+        else{
+            switch(browserName){
+                case "chrome":
+                    WebDriverManager.chromedriver().setup();
+                    this.driver = new ChromeDriver();
+                    break;
+                case "chromeheadless":
+                    ChromeOptions options = new ChromeOptions();
+                    options.addArguments("headless");
+                    WebDriverManager.chromedriver().setup();
+                    this.driver = new ChromeDriver(options);
+                    // following line allows headless mode to run in full screen to prevent flaky test case
+                    this.driver.manage().window().setSize(new Dimension(1440,900));
+                    break;
+                case "edge":
+                    WebDriverManager.edgedriver().setup();
+                    this.driver = new EdgeDriver();
+                    break;
 
-            case "firefox":
-                WebDriverManager.firefoxdriver().setup();
-                this.driver =  new FirefoxDriver();
-                break;
+                case "firefox":
+                    WebDriverManager.firefoxdriver().setup();
+                    this.driver =  new FirefoxDriver();
+                    break;
+            }
         }
         this.driver.manage().window().maximize();
         return this.driver;
