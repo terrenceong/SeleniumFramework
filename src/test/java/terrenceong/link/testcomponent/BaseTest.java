@@ -1,5 +1,6 @@
 package terrenceong.link.testcomponent;
 
+import com.sun.javafx.runtime.SystemProperties;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FileUtils;
@@ -39,14 +40,13 @@ public class BaseTest {
         browserName = browserName.toLowerCase();
         switch(browserName){
             case "chrome":
-                WebDriverManager.chromedriver().driverVersion("108.0.5359.124").setup();
-                ChromeOptions optionsBeta = new ChromeOptions();
-                optionsBeta.setBinary("src/main/resources/linux/chromedriver");
+                WebDriverManager.chromedriver().setup();
                 this.driver = new ChromeDriver();
                 break;
             case "chromeheadless":
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("headless");
+                WebDriverManager.chromedriver().setup();
                 this.driver = new ChromeDriver(options);
                 // following line allows headless mode to run in full screen to prevent flaky test case
                 this.driver.manage().window().setSize(new Dimension(1440,900));
