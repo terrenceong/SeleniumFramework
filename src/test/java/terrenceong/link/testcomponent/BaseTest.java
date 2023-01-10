@@ -40,6 +40,8 @@ public class BaseTest {
         switch(browserName){
             case "chrome":
                 WebDriverManager.chromedriver().driverVersion("108.0.5359.124").setup();
+                ChromeOptions optionsBeta = new ChromeOptions();
+                optionsBeta.setBinary("src/main/resources/linux/chromedriver");
                 this.driver = new ChromeDriver();
                 break;
             case "chromeheadless":
