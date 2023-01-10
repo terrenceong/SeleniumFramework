@@ -3,7 +3,7 @@
 <suite name="All Test Suite" parallel="tests">
     <groups>
         <run>
-            <include name="Testing123"></include>
+            <include name="ErrorHandling"></include>
         </run>
     </groups>
     <listeners>

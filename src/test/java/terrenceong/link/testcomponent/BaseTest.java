@@ -78,14 +78,14 @@ public class BaseTest {
         return  "data:image/png;base64,"+encodedBase64;
     }
 
-//    @BeforeMethod(alwaysRun = true)
-//    public void launchApplication() throws IOException {
-//        this.initializeDriver();
-//        this.loginPage = new LoginPage(this.driver);
-//        this.loginPage.goTo();
-//    }
-//    @AfterMethod(alwaysRun = true)
-//    public void closeBrowser(){
-//        this.driver.quit();
-//    }
+    @BeforeMethod(alwaysRun = true)
+    public void launchApplication() throws IOException {
+        this.initializeDriver();
+        this.loginPage = new LoginPage(this.driver);
+        this.loginPage.goTo();
+    }
+    @AfterMethod(alwaysRun = true)
+    public void closeBrowser(){
+        this.driver.quit();
+    }
 }

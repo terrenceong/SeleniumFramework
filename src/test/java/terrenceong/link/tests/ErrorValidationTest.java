@@ -28,10 +28,5 @@ public class ErrorValidationTest extends BaseTest {
         Assert.assertFalse(cartPage.verifyCartItemsAreCorrect(shoppingList));
 
     }
-    @Test(groups = {"Testing123"})
-    public void testing123(){
-        Assert.assertFalse(false);
-
-    }
 
 }
