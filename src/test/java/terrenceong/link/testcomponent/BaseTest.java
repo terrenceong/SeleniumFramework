@@ -42,7 +42,6 @@ public class BaseTest {
         if(remote){
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setBrowserName("chrome");
-            capabilities.setCapability("headless",true);
             String remoteURL = System.getProperty("remoteURL")!=null ? System.getProperty("remoteURL") : "http://localhost:4444";
             this.driver = new RemoteWebDriver(new URL(remoteURL),capabilities);
         }
