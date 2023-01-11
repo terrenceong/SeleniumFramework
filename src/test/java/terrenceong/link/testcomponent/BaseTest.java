@@ -42,7 +42,8 @@ public class BaseTest {
         if(remote){
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setBrowserName("chrome");
-            this.driver = new RemoteWebDriver(new URL("http://172.17.0.2:4444"),capabilities);
+            String remoteURL = System.getProperty("remoteURL")!=null ? System.getProperty("remoteURL") : "http://localhost:4444";
+            this.driver = new RemoteWebDriver(new URL(remoteURL),capabilities);
         }
         else{
             switch(browserName){
