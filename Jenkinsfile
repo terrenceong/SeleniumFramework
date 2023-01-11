@@ -13,6 +13,7 @@ pipeline {
                 echo "Check Versioning.."
                 sh '''
                 mvn -version
+                ls -ltr
                 '''
             }
         }
