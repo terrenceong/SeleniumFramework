@@ -21,7 +21,7 @@ pipeline {
             steps {
                 echo "Testing.."
                 sh '''
-                mvn test -P Regression -D remote=true remoteURL="$REMOTE_URL"
+                mvn test -P Regression -D remote=true -D remoteURL="remoteURL"
                 '''
             }
         }
